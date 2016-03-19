@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
         avrge = score / totlscr;
    
    // cout displays the percentage and score for that paticular exercise
-        cout << "Your total is " << score << " out of " << totlscr << "which equals to " 
+        cout << "Your total is " << score << " out of " << totlscr << " which equals to " 
              << avrge << "%" << endl;
         cout << "" << endl;
         
@@ -72,14 +72,16 @@ int main(int argc, char** argv) {
         sumttsc += score ;
         sumscre += totlscr;
         
-        fnlpcnt = (  sumttsc/sumscre); 
+        fnlpcnt = (  sumttsc/sumscre);  
         
         
         
         }
    //This line displays the average of percentage of the total score added up.
-    cout << "your total is " << sumttsc << " out of " << sumscre << " which "
-                "equals to" << fnlpcnt << "%.";
+    cout << "your total is " << sumttsc << " out of " << endl;
+    cout << sumscre << " which " << endl;
+    cout << "equals to" << fnlpcnt << "%.";
+    cout << " " << endl;
         
 //Map The Inputs to the Outputs
     

@@ -103,6 +103,7 @@ int main(int argc, char** argv) {
         cout.precision(1);
         cout << "It would take " << numofbrs << " chocolate bars thats 230 "
                 "calories each to full fill your BMR " <<endl;
+        cout << "" << endl;
         
     }
 //Output the Results
