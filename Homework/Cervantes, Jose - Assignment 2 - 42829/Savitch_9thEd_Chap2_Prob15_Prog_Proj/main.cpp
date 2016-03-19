@@ -7,7 +7,7 @@
 /* 
  * File:   main.cpp
  * Author: joseluiscervantes
- *
+ * Purpose: Calculate the Thermal expansion of Aluminum, Copper, Glass,and Steel
  * Created on March 18, 2016, 2:15 PM
  */
 
