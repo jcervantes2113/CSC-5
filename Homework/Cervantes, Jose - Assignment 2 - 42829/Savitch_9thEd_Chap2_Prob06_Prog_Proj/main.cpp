@@ -45,6 +45,8 @@ int main(int argc, char** argv) {
     payrate    = 16.78; // This is the pay rate at which the workers get paid 
     ovetimrte  = 25.17; // This is the overtime pay rate
 //Input Values 
+    cout << "This program calculates a workers wage" <<endl;
+    cout <<endl;
     cout << "Please enter the amount of hours you worked: ";
     cin  >> hours;
     cout << "Please enter the amount of dependents you have in your"
