@@ -39,14 +39,14 @@ int main(int argc, char** argv) {
     
 //Map The Inputs to the Outputs
     cout << "Hours    Distance Travled" << endl;
-    while (intrval <= time){
+    do {
         
         //This calculates the distance traveled at each hour and also displays 
         //it.
         distnce = speed * intrval;
         cout << intrval <<"        " <<distnce << endl;
         intrval++;
-    }
+    }while (intrval <= time);
     
 //Output the Results
    
