@@ -7,7 +7,7 @@
 /* 
  * File:   main.cpp
  * Author: joseluiscervantes
- *
+ * Purpose: calculate the sum of all integers mentioned
  * Created on April 3, 2016, 7:55 PM
  */
 
