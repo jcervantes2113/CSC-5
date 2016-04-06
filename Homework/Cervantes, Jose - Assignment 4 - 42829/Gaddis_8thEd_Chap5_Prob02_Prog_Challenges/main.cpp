@@ -39,11 +39,10 @@ int main(int argc, char** argv) {
     cout << "This program displays the characters for the ASCII codes 0 through 127. each \n"
             "line contains 16 characters on each line." << endl;
     
-    for (num = 0; num <= 128; num++){
+    for (num = 0; num <= 127; num++){
         if (num % 16 == 0){
             cout << endl;
         }
-       
        cout << letter;
        letter++;
        
