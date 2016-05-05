@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=project_1
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/project_1
+CND_ARTIFACT_NAME_Debug=cervantes__jose_-_project_1_-_42829
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/cervantes__jose_-_project_1_-_42829
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=project1.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/project1.tar
+CND_PACKAGE_NAME_Debug=cervantes,jose-project1-42829.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/cervantes,jose-project1-42829.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-MacOSX
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
-CND_ARTIFACT_NAME_Release=project_1
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/project_1
+CND_ARTIFACT_NAME_Release=cervantes__jose_-_project_1_-_42829
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/cervantes__jose_-_project_1_-_42829
 CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
-CND_PACKAGE_NAME_Release=project1.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/project1.tar
+CND_PACKAGE_NAME_Release=cervantes,jose-project1-42829.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/cervantes,jose-project1-42829.tar
 #
 # include compiler specific variables
 #
