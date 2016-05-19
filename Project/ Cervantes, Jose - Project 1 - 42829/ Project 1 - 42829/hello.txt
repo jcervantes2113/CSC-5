@@ -1,0 +1,16 @@
+
+New Game
+LEVEL 1 Word 1
+It took you 2 attempts to solve the word house
+
+LEVEL 1 Word 2
+It took you 1 attempts to solve the word pizza
+
+LEVEL 2 Word 1
+It took you 1 attempts to solve the word double
+
+LEVEL 2 Word 1
+It took you 1 attempts to solve the word plagiarism
+
+END OF GAME
+
