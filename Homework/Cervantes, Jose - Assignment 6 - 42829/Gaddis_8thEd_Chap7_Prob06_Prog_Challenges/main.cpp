@@ -11,15 +11,28 @@
  * Created on May 18, 2016, 8:18 PM
  */
 
-#include <cstdlib>
-
+#include<iostream>
 using namespace std;
 
-/*
- * 
- */
-int main(int argc, char** argv) {
+//User Libraries
 
+//Global Constants
+
+//Function Prototypes
+
+//Execution Begins Here!
+
+int main(int argc, char** argv) {
+//Declared Variables
+
+//Initialize Variables
+
+//Input Values 
+    
+//Map The Inputs to the Outputs
+    
+//Output the Results
+
+//Exit Stage Right!
     return 0;
 }
-
