@@ -7,8 +7,8 @@
 /* 
  * File:   main.cpp
  * Author: joseluiscervantes
- * Purpose Sort String list
- * Created on May 31, 2016, 4:12 PM
+ * Purpose Binary String Search
+ * Created on June 1, 2016, 9:47 AM
  */
 
 #include<iostream>
@@ -17,6 +17,7 @@ using namespace std;
 
 void sortArr(string [], int);
 void prntArr(string [], int);
+int binSrch (string [], int, string);
 
 //User Libraries
 
@@ -30,7 +31,7 @@ const int SIZE = 20;
 int main(int argc, char** argv) {
 //Declared Variables
 
-
+string answer; 
 string names[SIZE] = {"Collins, Bill", "Smith, Bart", "Allen, Jim",
                            "Griffin, Jim", "Stamey, Marty", "Rose, Geri", 
                            "Taylor, Terri", "Johnson, Jill","Allison, Jeff", 
@@ -49,6 +50,16 @@ string names[SIZE] = {"Collins, Bill", "Smith, Bart", "Allen, Jim",
         sortArr(names,SIZE);
     //Print the array
         prntArr(names,SIZE);
+    //Binary Search
+        cout<<endl<<endl<<"Please enter the name you are searching for"<<endl;
+        getline(cin, answer);
+        binSrch (names, SIZE, answer);
+        
+        if (binSrch (names, SIZE, answer) == 1){
+        cout<<"YOUR NAME IS ON THE LIST!!!!!!";
+        }else{
+            cout<<"your name is NOT on the list";
+        }
 
 //Exit Stage Right!
     return 0;
@@ -56,23 +67,35 @@ string names[SIZE] = {"Collins, Bill", "Smith, Bart", "Allen, Jim",
 
 
 
-/*
-void sortArry(string n[], int size){
-    string tempV(0);
+
+
+
+int binSrch (string *n, int size, string answer){
+//Declared variables   
+    int first(0), last(0), mid;
+    bool found = false;
     
-    for (int i=0; i<size; i++)
+//Initialized Variables
+    last = size - 1;
+    first= 0;
+    
+//Binary Search    
+    while (!found && first <= last){
+        mid = (first + last)/2;
         
-        for(int x=i+0; x<size; x++){
-            
-            if ((n[i]) > (n[x])){
-                
-                tempV  = n[i];
-                n[i] = n[x];
-                n[x] = tempV;
-            }//end of if statement
-        }//end of for loop
-}//end of function
-*/
+        if (answer == *(n+mid)){
+            found = true;
+            return 1;
+        }else if(answer < *(n+mid)){
+            last = mid - 1;
+        }else{
+            first = mid +1;
+        }//end of else statement 
+        
+    }//end of while statement 
+    return -1;
+}//end of function  
+
 
 
 void sortArr(string array[], int NUM_NAMES){
