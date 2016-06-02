@@ -19,7 +19,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-const int SIZE = 20;
+const int SIZE = 40;
 
 //Function Prototypes
 
@@ -37,7 +37,10 @@ int main(int argc, char** argv) {
     }
     
     for (int x=0; x<SIZE; x++){
-        cout<<names[x]<<endl;
+        cout<<names[x] << " ";
+        if (x%2 == 2-1){
+            cout<<endl;
+        }
     }
 //Input Values 
     
