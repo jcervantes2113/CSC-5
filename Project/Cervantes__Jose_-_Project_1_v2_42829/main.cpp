@@ -36,6 +36,7 @@ using namespace std;
     const int SIZE=20;
 //Function Prototypes
 
+int srchArr(string [], string, int);
 void selSort(int[], string[],int);
 void fillArr(string[][WORDS], int, int); //fills the array with the words
 void randNum(int[], int size=WORDS); // generates a random order for the word bank
@@ -54,7 +55,7 @@ int main(int argc, char** argv) {
 //Input Values
     
     //Declared variables
-    int attempts(0), tempV(0);
+    int attempts(0), tempV(0), rank(0);
     int random[WORDS]={};
     string wrdBank[LEVEL][WORDS]={};
     
@@ -66,6 +67,9 @@ int main(int argc, char** argv) {
     
     ofstream out_Hscore;//Output file
     out_Hscore.open("high_score.txt",ios::app);    
+    
+    ifstream in_Hscore;//Output file
+    in_Hscore.open("high_score.txt"); 
     
         
     //random numbers
@@ -123,10 +127,39 @@ int main(int argc, char** argv) {
                             
                             cout<<"It took you "<<attempts<<" attempts to complete 1 player mode"<<endl;
 
-                            cout<<"Please enter your first, last, or nickname name with no spaces for your score."<<endl;
+                            cout<<"Please enter your first, last, or nickname name with no spaces for your score:";
                             cin>>name;
                             out_Hscore<<name<<" "<<attempts<<endl;
-                    //If statement for player two is true        
+                            cout<<endl<<endl;
+
+                            int amount = -1;
+
+
+                            do{ 
+                                //Fills the array 
+                                amount++; 
+                                in_Hscore>>scoreNm[amount]>>score[amount];
+
+                            }while(score[amount]>0);
+
+                            //Sorts the players Score from the file from highest to lowest
+                            selSort(score, scoreNm, amount);
+
+                            rank = srchArr(scoreNm, name, amount);
+
+                            cout<<"You placed "<<rank<<" place out of "<<amount<<" Total people"<<endl;
+
+
+
+                            cout<<endl;
+                            cout<<"Leader board for Single Player."<<endl;
+                            cout <<"Rnk  Name"<<"           "<<"Attempts"<<endl;
+                            for(int i=0; i<amount; i++){
+                                cout<<i+1<<"    "<<scoreNm[i]<<"             "<<score[i]<<endl;
+                            
+                                                //If statement for player two is true      
+                            } 
+                            cout<<"thank you"<<endl;
                     }else if(players == 'y' || players == 'Y'){
 
                             cout<<"You selected 2 players."<<endl<<endl;
@@ -194,36 +227,7 @@ int main(int argc, char** argv) {
     }while(repeat == answer);
      
     
-    ifstream in_Hscore;//Output file
-    in_Hscore.open("high_score.txt"); 
-    
-    
-    
 
-    cout<<"Enter x if you would like to see the leader board or y to quit: ";
-    cin>>players;
-    
-    if(players == 'x'|| players == 'X'){
-        int amount = -1;
-
-        do{ 
-        //Fills the array 
-        amount++; 
-        in_Hscore>>scoreNm[amount]>>score[amount];
-
-        }while(score[amount]>0);
-        
-        //Sorts the players Score from the file from highest to lowest
-        selSort(score, scoreNm, amount);
-        cout<<endl;
-        cout<<"Leader board for Single Player."<<endl;
-        cout <<"Rnk  Name"<<"           "<<"Attempts"<<endl;
-        for(int i=0; i<amount; i++){
-            cout<<i+1<<"    "<<scoreNm[i]<<"             "<<score[i]<<endl;
-        }
-    }else {
-        cout<<"Thank you"<<endl;
-    }
     
     
 //Map The Inputs to the Outputs
@@ -245,13 +249,14 @@ int main(int argc, char** argv) {
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
-int srchArr(int *n, int answer, int size){
+int srchArr(string n[], string answer, int size){
    bool value = false;
     // Linear search
     for (int i = 0; i < size; i++){
-        if (*(n+i) == answer) {value = true;}
+        if (n[i] == answer) {
+            return i+1;}
     }
-    return value; // Returns true found or false for not found
+     // Returns true found or false for not found
 }
 
 
@@ -275,7 +280,7 @@ void selSort(int score[], string scoreNm[], int size){
     for(int i=0; i<size; i++)
         for(int x=i+1; x<size; x++){
             
-            if(score[i] < score[x]){
+            if(score[i] > score[x]){
                 
                 
                 tempV=score[i];

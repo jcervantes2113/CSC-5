@@ -4,3 +4,8 @@ bill 23
 jacob 12
 juan 10
 john 10
+tom 10
+chives 56
+aaaa 10
+imthebest 32
+abcd 35
