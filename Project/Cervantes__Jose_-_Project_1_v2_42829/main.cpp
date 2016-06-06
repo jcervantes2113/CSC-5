@@ -57,18 +57,23 @@ int main(int argc, char** argv) {
     //Declared variables
     int attempts(0), tempV(0), rank(0);
     int random[WORDS]={};
+    char players;
+    unsigned short size(0), answer(0);
+    bool repeat = true;
+    int score[SIZE]={};
+    
+    string word, hint, name;    
+    string scoreNm[SIZE]={};
     string wrdBank[LEVEL][WORDS]={};
     
-    int score[SIZE]={};
-    string scoreNm[SIZE]={};
-    
     ofstream out;//Output file
-    out.open("score.txt",ios::app);
-    
     ofstream out_Hscore;//Output file
-    out_Hscore.open("high_score.txt",ios::app);    
+    ifstream in_Hscore;//input file
+
     
-    ifstream in_Hscore;//Output file
+    //open files
+    out.open("score.txt",ios::app);
+    out_Hscore.open("high_score.txt",ios::app);
     in_Hscore.open("high_score.txt"); 
     
         
@@ -94,18 +99,7 @@ int main(int argc, char** argv) {
     cout<<"****************************************************************"<<endl;
     // Robert ??????
     
-    //Declared variables
-    char players;
-    unsigned short size(0), answer(0);
-    bool repeat = true;
-    //players = takes in the user input for what mode they want
-    //size = takes in the number of characters that player1 entered
-    //answer = takes in the user input if they want to run the code again
-    //bool repeat = repeat is set to true which is 1.
-    
-    string word, hint, name;
-    //word = For player 2 mode. Take the user inputs for the word they want player 2 to solve.
-    //hint = hint is used by the user to receive a hint by typing in hint    
+ 
  
     
 // This do statement re-runs the whole game if the user wants do    
@@ -123,6 +117,7 @@ int main(int argc, char** argv) {
 
                     //If statement for player one is true
                     if (players == 'x' || players == 'X'){
+                        
                             plyr1(wrdBank, random, WORDS, attempts);
                             
                             cout<<"It took you "<<attempts<<" attempts to complete 1 player mode"<<endl;
@@ -200,8 +195,8 @@ int main(int argc, char** argv) {
                         }
 
                     // If the user fails to enter x or y
-                }else{
-                   cout << "you did not enter x or y" << endl;
+                    }else{
+                        cout << "you did not enter x or y" << endl;
 
                 }
 
@@ -249,11 +244,11 @@ int main(int argc, char** argv) {
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
-int srchArr(string n[], string answer, int size){
+int srchArr(string *n, string answer, int size){
    bool value = false;
     // Linear search
     for (int i = 0; i < size; i++){
-        if (n[i] == answer) {
+        if (*(n+i) == answer) {
             return i+1;}
     }
      // Returns true found or false for not found
