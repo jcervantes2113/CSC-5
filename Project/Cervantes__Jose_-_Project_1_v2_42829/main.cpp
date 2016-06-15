@@ -56,32 +56,52 @@ int main(int argc, char** argv) {
     
     //Declared variables
     int attempts(0), tempV(0), rank(0);
-    int random[WORDS]={};
+    //attempts = keeps track of the number of attempts
+    //tempV = tempearly holds the vaalue of the returned function
+    //rank = holds the position of the returned value in which position you got on the leaderboard
+    
+    int random[WORDS]={}; 
+    //random[WORDS] = holds the random numbers that were generated to output the words a new order every time
+    
     char players;
+    //players = holds the value the user enters
+    
     unsigned short size(0), answer(0);
+    //size = for two player mode to determine if the word entered is the required length
+    // answer = input
+    
     bool repeat = true;
+    
+    
     int score[SIZE]={};
+    //score[SIZE] = holds the scores of the every player thats played the game
     
     string word, hint, name;    
     string scoreNm[SIZE]={};
     string wrdBank[LEVEL][WORDS]={};
+    //word = used 2 player mode to hold the word entered
+    //hint = used 2 player mode to hold the hint entered
+    // name = used 1 player mode to hold the name entered for the scoreboard
+    //scoreNm[SIZE] = holds the name of the score board
+    // wrdBank[LEVEL][WORDS]= holds the 5 words in the 2 levels
     
     ofstream out;//Output file
     ofstream out_Hscore;//Output file
     ifstream in_Hscore;//input file
-
-    
+    //out = outputs the score for two player mode 
+    //out_Hscore = out puts the score you got to the file
+    //in__Hscore = inputs the leader board from the file to the screen in order
     //open files
     out.open("score.txt",ios::app);
     out_Hscore.open("high_score.txt",ios::app);
     in_Hscore.open("high_score.txt"); 
     
         
-    //random numbers
-    randNum(random);
+    //Generates random numbers to switch up the order of the words
+        randNum(random);
     
     //Fills the array with the word bank
-    fillArr(wrdBank, WORDS,LEVEL);
+        fillArr(wrdBank, WORDS,LEVEL);
     
     //Menu
     cout<<"****************************************\n";
@@ -118,7 +138,9 @@ int main(int argc, char** argv) {
                     //If statement for player one is true
                     if (players == 'x' || players == 'X'){
                         
+                        //calls the function where the main game happens
                             plyr1(wrdBank, random, WORDS, attempts);
+                            
                             
                             cout<<"It took you "<<attempts<<" attempts to complete 1 player mode"<<endl;
 
@@ -126,26 +148,30 @@ int main(int argc, char** argv) {
                             cin>>name;
                             out_Hscore<<name<<" "<<attempts<<endl;
                             cout<<endl<<endl;
-
+                            
+                            
                             int amount = -1;
 
 
                             do{ 
-                                //Fills the array 
+                                //Fills the array's to output the updated scoreboard
                                 amount++; 
                                 in_Hscore>>scoreNm[amount]>>score[amount];
-
+                                
+                                //Keeps filing until the last value is zero;
                             }while(score[amount]>0);
 
                             //Sorts the players Score from the file from highest to lowest
                             selSort(score, scoreNm, amount);
-
+                            
+                            //Holds the returned position of the place the user got
                             rank = srchArr(scoreNm, name, amount);
-
+                            
+                            //Displays the place they reived
                             cout<<"You placed "<<rank<<" place out of "<<amount<<" Total people"<<endl;
 
 
-
+                            //Output the whole leader boards
                             cout<<endl;
                             cout<<"Leader board for Single Player."<<endl;
                             cout <<"Rnk  Name"<<"           "<<"Attempts"<<endl;
@@ -236,11 +262,12 @@ int main(int argc, char** argv) {
 }
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
-/**************************** randNum();  ***********************************
+/**************************** srchArr();  ***********************************
  *Inputs
- *      answer --->  inputs the word being guessed
+ *      none
  *Outputs
- * the menu
+ *  
+ * *n --> returns the position at which the user has placed
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -262,9 +289,9 @@ int srchArr(string *n, string answer, int size){
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
 /**************************** randNum();  ***********************************
  *Inputs
- *      answer --->  inputs the word being guessed
+ *      none
  *Outputs
- * the menu
+ *     none
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -277,11 +304,12 @@ void selSort(int score[], string scoreNm[], int size){
             
             if(score[i] > score[x]){
                 
-                
+                // Switches the scores of the leaderboard
                 tempV=score[i];
                 score[i]=score[x];
                 score[x]=tempV;
                 
+                //The names also get switched with the score to retain the same position
                 tempS=scoreNm[i];
                 scoreNm[i]=scoreNm[x];
                 scoreNm[x]=tempS;
@@ -294,11 +322,11 @@ void selSort(int score[], string scoreNm[], int size){
 
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
-/**************************** randNum();  ***********************************
+/**************************** fillArr();  ***********************************
  *Inputs
- *      answer --->  inputs the word being guessed
+ *      none
  *Outputs
- * the menu
+ * none
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -308,6 +336,7 @@ void fillArr(string wrdBank[][WORDS], int words, int levels){
     //Fills the array with the wordbank from a file.
     in.open("word.txt");
     
+    //Fills the two dimensional array with words from the file
     for(int x=0; x<levels; x++){
         for(int i=0; i<5; i++){
             in>>wrdBank[x][i];
@@ -323,9 +352,9 @@ void fillArr(string wrdBank[][WORDS], int words, int levels){
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
 /**************************** randNum();  ***********************************
  *Inputs
- *      answer --->  inputs the word being guessed
+ *      none
  *Outputs
- * the menu
+ *     *n --> returns the random numbers that will be used in 1 player mode
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -334,16 +363,21 @@ void randNum(int n[], int size){
     bool repeat;
     srand(time(0));
     
+    //this for loop assigns a random number to the array
     for(int x=0; x<size; x++){
+        //If a number is repeated this do statement reruns the program
+        //until a new number is found
         do{
             repeat = true;
             num=rand()%size;
+            //This for loop checks to see if the number assigned is repeated
             for (int i=0; i<x; i++){
                 if (num == n[i]){
                     repeat=false;
                 }//End of if statement
             }//End of for loop
         }while(!(repeat));  
+        // if the number isn't repeated its assigned to the array
         n[x] = num;
     }//End of 1st for loop
 }//End of function
@@ -358,7 +392,7 @@ void randNum(int n[], int size){
  *Inputs
  *      none
  *Outputs
- *    unWord--> the hint of the word
+ *    unWord---> outputs unWord scrambled
 */
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -366,6 +400,7 @@ void scramble (string unWord){
     int size;
     size = unWord.length();
     
+    //Scrambles the words in 1 player mode based upon their size
      if (size == 3){               
            // Word.at() scrambles the whole word and out puts it
            cout<<unWord.at(2)<<unWord.at(1)<<unWord.at(0)<<endl;
@@ -452,6 +487,7 @@ void scramble (string unWord){
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
 void defntn (string unWord){
     if(unWord == "hat"){
+        
         cout<<"* HINT: I am Something you wear."<<endl;
     }else if (unWord == "double"){
         cout<<"* HINT: This is how you get an F in C++."<<endl;
@@ -480,7 +516,7 @@ void defntn (string unWord){
 
 //000000011111111112222222222333333333344444444445555555555666666666677777777778
 //345678901234567890123456789012345678901234567890123456789012345678901234567890
-/**************************** randNum();  ***********************************
+/**************************** plyr1();  ***********************************
  *Inputs
  *      none
  *Outputs
@@ -538,7 +574,8 @@ void plyr1(string wrdBank[][WORDS], int order[], int words, int &attempts){
                          // Displays the hint to the user
                            if (answer == "hint"){
                             cout<<"***********************************************************"<<endl; 
-                     //Function call
+                     
+                            //Function call
                             defntn (unWord); //definition of the word
                             cout<<"***********************************************************"<<endl; 
                             cout<<"* Make sure your caps lock is off and                     *"<<endl;
@@ -555,7 +592,7 @@ void plyr1(string wrdBank[][WORDS], int order[], int words, int &attempts){
                        cout<<endl<<endl;
                        } 
 
-                attempts++;
+                attempts++;// keeps track of the number of attempts
 
                 }while (!(answer == unWord)); // If the answer entered is false then the ! 
                                             // operator returns the value true and runs 
